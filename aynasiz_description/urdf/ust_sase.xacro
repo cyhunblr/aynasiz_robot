@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="ust_sase" params="xyz_konum rpy_konum">
+    <link name="base_top_link">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://aynasiz_description/dae/ust_sase.dae" />
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://aynasiz_description/dae/ust_sase.dae" />
+        </geometry>
+      </visual>
+
+    <xacro:cylinder_inertial radius="0.02" length="0.01" mass="0.2"/>
+    </link>
+
+    <joint name="ust_sase_joint" type="fixed">
+        <origin xyz="${xyz_konum}" rpy="${rpy_konum}"/>
+        <parent link="base_link"/>
+        <child link="base_top_link"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+
+    <gazebo reference="base_link">
+      <material value="Gazebo/Blue"/>
+    </gazebo>
+    
+  </xacro:macro>
+</robot>

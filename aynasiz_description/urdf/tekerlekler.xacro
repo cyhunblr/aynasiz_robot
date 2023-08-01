@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="tekerler" params="xyz_konum rpy_konum yon">
+  <link name="wheel_${yon}_link">
+    <collision>
+       <origin xyz="0 0 0" rpy="0 0 1.57079632679"/>
+        <geometry>
+          <mesh filename="package://aynasiz_description/dae/teker.dae" />
+        </geometry>
+    </collision>
+    <visual>
+       <origin xyz="0 0 0" rpy="0 0 1.57079632679"/>
+        <geometry>
+          <mesh filename="package://aynasiz_description/dae/teker.dae" />
+        </geometry>
+    </visual>
+    <xacro:cylinder_inertial radius="0.03" length="0.0011" mass="0.04"/>
+  </link>
+  
+  <joint name="wheel_${yon}_joint" type="continuous">
+    <origin xyz="${xyz_konum}" rpy="${rpy_konum}"/>
+    <parent link="base_link"/>
+    <child link="wheel_${yon}_link"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  
+  <gazebo reference="wheel_${yon}_link">
+    <material value="Gazebo/Black"/>
+  </gazebo>  
+
+  </xacro:macro>
+
+  <xacro:macro name="sarhos_tekerler" params="xyz_konum rpy_konum yon">
+  <link name="caster_wheel_${yon}_link">
+    <collision>
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+         <sphere radius="0.0105"/>
+       </geometry>
+    </collision>
+    <visual>
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+         <sphere radius="0.0105"/>
+       </geometry>
+    </visual>
+    <xacro:sphere_inertial radius="0.0105" mass="0.04"/>
+  </link>
+  
+  <joint name="caster_wheel_${yon}_joint" type="continuous">
+    <origin xyz="${xyz_konum}" rpy="${rpy_konum}"/>
+    <parent link="base_link"/>
+    <child link="caster_wheel_${yon}_link"/>
+    <axis xyz="1 1 1"/>
+  </joint>
+  
+  <gazebo reference="caster_wheel_${yon}_link">
+    <material value="Gazebo/black"/>
+  </gazebo>  
+
+  </xacro:macro>
+
+</robot>

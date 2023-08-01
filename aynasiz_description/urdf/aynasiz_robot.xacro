@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot name = "aynasiz_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find aynasiz_description)/urdf/sase.xacro"/>
+  <xacro:include filename="$(find aynasiz_description)/urdf/inertia.xacro"/>
+  <xacro:include filename="$(find aynasiz_description)/urdf/tekerlekler.xacro"/>
+  <xacro:include filename="$(find aynasiz_description)/urdf/ust_sase.xacro"/>
+  <xacro:include filename="$(find aynasiz_description)/urdf/diferansiyel.xacro"/>
+
+  <xacro:sase />
+  <xacro:ust_sase xyz_konum="0 0 0.05" rpy_konum="0 0 0" />
+  <xacro:tekerler xyz_konum="0 0.06 0.01" rpy_konum="0 0 0" yon="left"/>
+  <xacro:tekerler xyz_konum="0 -0.06 0.01" rpy_konum="0 0 0" yon="right"/> 
+  <xacro:sarhos_tekerler xyz_konum="0.09 0 -0.00925" rpy_konum="0 0 0" yon="forward_chaster_wheel"/> 
+  <xacro:sarhos_tekerler xyz_konum="-0.09 0 -0.00925" rpy_konum="0 0 0" yon="backward_chaster_wheel"/> 
+  <xacro:diferansiyel />
+
+  
+</robot>
