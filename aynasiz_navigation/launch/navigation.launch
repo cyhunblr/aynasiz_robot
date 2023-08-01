@@ -1,0 +1,10 @@
+<launch>	
+
+	<arg name="map_file" default="$(find aynasiz_navigation)/config/lab.yaml"/>
+
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+	<include file="$(find aynasiz_navigation)/launch/move_base.launch" />
+	<include file="$(find aynasiz_navigation)/launch/amcl.launch" />
+
+</launch>
